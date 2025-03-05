@@ -15,6 +15,10 @@ pipeline {
 
                 // To run Maven on a Windows agent, use
                 // bat "mvn -Dmaven.test.failure.ignore=true clean package"
+
+                sh "docker build . -t simple-maven-project:latest"
+                sh "docker login"
+                sh "docker push simple-maven-project:latest"
             }
 
             post {
